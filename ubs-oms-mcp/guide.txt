@@ -1,0 +1,16 @@
+# 1. Install
+cd ubs-oms-mcp
+pip install -r requirements.txt
+
+# 2. Run MCP Server (Terminal 1)
+python mcp_server/server.py
+
+# 3. Run FastAPI (Terminal 2)
+cd fastapi_gateway
+uvicorn main:app --port 8000
+
+# 4. Demo Learning Pipeline
+python learning_pipeline/generate_samples.py  # Create test data
+python learning_pipeline/analyze.py           # Find patterns
+python learning_pipeline/train.py             # Generate v2 prompt
+python learning_pipeline/deploy.py --version v2
