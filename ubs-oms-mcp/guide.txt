@@ -14,3 +14,30 @@ python learning_pipeline/generate_samples.py  # Create test data
 python learning_pipeline/analyze.py           # Find patterns
 python learning_pipeline/train.py             # Generate v2 prompt
 python learning_pipeline/deploy.py --version v2
+
+
+cd ubs-oms-agl
+pip install -r requirements.txt  # Includes agentlightning
+
+# Terminal 1: MCP Server
+python mcp_server/server.py
+
+# Terminal 2: FastAPI
+cd fastapi_gateway
+uvicorn main:app --port 8000
+
+# Create 30 sample corrections
+python learning_pipeline/generate_samples.py
+
+# Convert JSON corrections to AGL format
+python learning_pipeline/train_agl.py --migrate
+
+# Analyze
+python learning_pipeline/train_agl.py --analyze
+
+# Train with APO
+python learning_pipeline/train_agl.py --train
+
+# Review & deploy
+cat data/prompts/strategy_v2.txt
+python learning_pipeline/deploy.py --version v2
