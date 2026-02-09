@@ -1,53 +1,29 @@
-What you should say (talk track)
+Narration:
+Today, placing an order requires filling rigid tickets. Traders think in intent, not fields.
+Our GUI allows users to express intent in natural language, like 'Buy 100k AAPL with minimal impact'.
+The system converts that intent into a structured order and explains what it understood.
+This is decision support, not auto-trading. The user always reviews and controls the outcome.
 
-“Today, placing an order still means filling out rigid fields.
-Traders think in intent — not fields.”
+Narration:
+Once intent is understood, the AI suggests an execution strategy.
+In phase one, we intentionally limit scope to VWAP, TWAP, and POV for safety and transparency.
+The AI explains why it recommends each strategy—based on order size, urgency, market liquidity, and your past preferences.
+Critically, user corrections are treated as learning signals, not errors.
+You can accept, modify, or completely override any suggestion.
 
-“Our goal is to build an AI-powered trading GUI where the user can simply say:
-Buy 100k AAPL with minimal impact.”
+Narration:
+Learning is the most critical and most misunderstood part.
+There is no real-time learning in production. Inference and execution are fully deterministic.
+User corrections are captured and analyzed offline, typically end of day.
+APO reinforcement learning improves prompts and strategy mapping, not execution logic.
+Every improvement is reviewed and approved—typically before deployment, and can be rolled back at any time.
+Inference is real-time. Learning is offline. Humans stay in control.
 
-“The GUI converts that intent into a fully structured order — instrument, side, quantity, urgency, constraints — and explains what it understood.”
-
-“Nothing is auto-executed blindly.
-The user always sees, understands, and controls the outcome.”
-
-Key message to land:
-👉 This is an intent-capture and decision-support system — not auto-trading.
-
-
-What you should say
-
-“Once intent is understood, the next step is strategy — not execution.”
-
-“In phase one, we intentionally limit scope to VWAP, TWAP, and POV.
-These are well-understood, benchmarkable, and safe for learning.”
-
-“The AI doesn’t just suggest a strategy — it explains why:
-liquidity, order size, urgency, and the user’s past behavior.”
-
-“If the user modifies or overrides the suggestion, that decision is not treated as an error — it’s treated as a learning signal.”
-
-“This is how we personalize without losing control.”
-
-Key message to land:
-👉 We optimize for alignment with trader expectations, not blind optimization.
-
-What you should say
-
-“This is the most important slide — and also the most misunderstood topic: learning.”
-
-“There is no real-time learning in production.
-Nothing adapts while an order is being executed.”
-
-“All learning happens offline, typically end-of-day.”
-
-“Agent captures explicit user corrections — accepts, overrides, parameter changes.”
-
-“APO reinforcement learning is used to improve prompts, reasoning, and strategy mapping — not to change execution behavior directly.”
-
-“Every change goes through human review, approval, and rollback.”
-
-“This ensures we improve safely, audibly, and incrementally.”
-
-Key message to land:
-👉 Inference is real-time. Learning is offline. Humans stay in control.
+Narration:
+This diagram shows our complete technical architecture with clear separation of concerns.
+The blue section represents real-time inference—fully deterministic with no learning.
+When a trader enters an order, it flows through our vendor-neutral agent layer to the LLM for strategy suggestion.
+The user reviews and confirms. If they make a correction, that flows to the green section—the offline learning path.
+End of day, we run APO reinforcement learning on accumulated corrections.
+Every change goes through human review before deployment.
+Notice the dashed line from governance back to the agent—that's our rollback capability.
