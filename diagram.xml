@@ -1,0 +1,67 @@
+<mxGraphModel dx="264884" dy="147044" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="900" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="header" parent="1" style="text;html=1;fontSize=24;fontStyle=1;align=center;whiteSpace=wrap;" value="AI Trading System Architecture&#xa;Real-Time Execution with Offline Learning and Governance" vertex="1">
+      <mxGeometry height="60" width="1200" x="300" y="10" as="geometry" />
+    </mxCell>
+    <mxCell id="rt-bg" parent="1" style="rounded=1;fillColor=#f0f8ff;strokeColor=none;opacity=40;" vertex="1">
+      <mxGeometry height="260" width="1680" x="60" y="90" as="geometry" />
+    </mxCell>
+    <mxCell id="offline-bg" parent="1" style="rounded=1;fillColor=#e8f5e9;strokeColor=none;opacity=30;" vertex="1">
+      <mxGeometry height="300" width="1680" x="60" y="380" as="geometry" />
+    </mxCell>
+    <mxCell id="rt-label" parent="1" style="text;html=1;fontSize=16;fontStyle=1;" value="Real-Time Inference Path (No Learning)" vertex="1">
+      <mxGeometry height="30" width="600" x="80" y="70" as="geometry" />
+    </mxCell>
+    <mxCell id="offline-label" parent="1" style="text;html=1;fontSize=16;fontStyle=1;" value="Offline Learning Path (End of Day Batch Only)" vertex="1">
+      <mxGeometry height="30" width="600" x="80" y="360" as="geometry" />
+    </mxCell>
+    <mxCell id="users" parent="1" style="rounded=1;fillColor=#e3f2fd;strokeColor=#1976d2;fontSize=13;" value="Traders and Execution Advisors" vertex="1">
+      <mxGeometry height="60" width="260" x="100" y="160" as="geometry" />
+    </mxCell>
+    <mxCell id="ui" parent="1" style="rounded=1;fillColor=#bbdefb;strokeColor=#1976d2;fontSize=13;" value="AI Trading UI&#xa;Natural Language Orders" vertex="1">
+      <mxGeometry height="80" width="260" x="420" y="150" as="geometry" />
+    </mxCell>
+    <mxCell id="api" parent="1" style="rounded=1;fillColor=#fff9c4;strokeColor=#f9a825;fontSize=13;" value="API Gateway" vertex="1">
+      <mxGeometry height="60" width="220" x="720" y="165" as="geometry" />
+    </mxCell>
+    <mxCell id="agent" parent="1" style="rounded=1;fillColor=#e8f5e9;strokeColor=#388e3c;fontSize=13;" value="Agent Layer&#xa;Vendor Neutral" vertex="1">
+      <mxGeometry height="80" width="260" x="980" y="150" as="geometry" />
+    </mxCell>
+    <mxCell id="llm" parent="1" style="rounded=1;fillColor=#ffebee;strokeColor=#d32f2f;fontSize=13;" value="LLM Reasoning Engine" vertex="1">
+      <mxGeometry height="80" width="260" x="1280" y="150" as="geometry" />
+    </mxCell>
+    <mxCell id="strategy" parent="1" style="rounded=1;fillColor=#e3f2fd;strokeColor=#1565c0;fontSize=13;" value="Strategy Selection&#xa;VWAP / TWAP / POV" vertex="1">
+      <mxGeometry height="70" width="260" x="980" y="250" as="geometry" />
+    </mxCell>
+    <mxCell id="oms" parent="1" style="rounded=1;fillColor=#f5f5f5;strokeColor=#616161;fontSize=13;" value="OMS and Execution" vertex="1">
+      <mxGeometry height="70" width="260" x="1280" y="250" as="geometry" />
+    </mxCell>
+    <mxCell id="feedback" parent="1" style="rounded=1;fillColor=#fff3e0;strokeColor=#ef6c00;fontSize=13;" value="Explicit User Corrections" vertex="1">
+      <mxGeometry height="60" width="260" x="720" y="420" as="geometry" />
+    </mxCell>
+    <mxCell id="history" parent="1" style="rounded=1;fillColor=#e8f0fe;strokeColor=#1976d2;fontSize=13;" value="User Behavior and History Store" vertex="1">
+      <mxGeometry height="60" width="260" x="420" y="420" as="geometry" />
+    </mxCell>
+    <mxCell id="rl" parent="1" style="rounded=1;fillColor=#fafafa;strokeColor=#424242;fontSize=13;dashed=1;" value="Offline RL Training (APO)&#xa;End of Day Batch Only" vertex="1">
+      <mxGeometry height="80" width="560" x="420" y="520" as="geometry" />
+    </mxCell>
+    <mxCell id="gov" parent="1" style="rounded=1;fillColor=#f0f4f8;strokeColor=#5a7da3;fontSize=13;" value="Human Review and Approval&#xa;Audit and Rollback" vertex="1">
+      <mxGeometry height="80" width="500" x="1040" y="520" as="geometry" />
+    </mxCell>
+    <mxCell id="2" edge="1" parent="1" source="users" style="endArrow=block;strokeWidth=2;" target="ui">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="3" edge="1" parent="1" source="ui" style="endArrow=block;strokeWidth=2;" target="api" />
+    <mxCell id="4" edge="1" parent="1" source="api" style="endArrow=block;strokeWidth=2;" target="agent" />
+    <mxCell id="5" edge="1" parent="1" source="agent" style="endArrow=block;strokeWidth=2;" target="llm" />
+    <mxCell id="6" edge="1" parent="1" source="llm" style="endArrow=block;strokeWidth=2;" target="strategy" />
+    <mxCell id="7" edge="1" parent="1" source="strategy" style="endArrow=block;strokeWidth=2;" target="oms" />
+    <mxCell id="8" edge="1" parent="1" source="strategy" style="endArrow=block;strokeWidth=2;dashed=1;" target="feedback" />
+    <mxCell id="9" edge="1" parent="1" source="feedback" style="endArrow=block;strokeWidth=2;" target="history" />
+    <mxCell id="10" edge="1" parent="1" source="history" style="endArrow=block;strokeWidth=2;" target="rl" />
+    <mxCell id="11" edge="1" parent="1" source="rl" style="endArrow=block;strokeWidth=2;" target="gov" />
+    <mxCell id="12" edge="1" parent="1" source="gov" style="endArrow=block;strokeWidth=2;dashed=1;" target="agent" />
+  </root>
+</mxGraphModel>
